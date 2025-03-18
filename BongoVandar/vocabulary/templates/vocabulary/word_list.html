@@ -1,0 +1,29 @@
+{% extends 'vocabulary/base.html' %}
+
+{% block content %}
+<h2>শব্দ তালিকা</h2>
+<table>
+    <tr>
+        <th>বর্ণ</th>
+        <th>উৎস</th>
+        <th>প্রকার</th>
+        <th>মূল শব্দ</th>
+        <th>লেবেল</th>
+        <th>উৎপত্তি</th>
+        <th>উদাহরণ</th>
+        <th>সমার্থক</th>
+    </tr>
+    {% for word in words %}
+    <tr>
+        <td>{{ word.varna }}</td>
+        <td>{{ word.source }}</td>
+        <td>{{ word.type }}</td>
+        <td>{{ word.root_word }}</td>
+        <td>{{ word.details.label }}</td>
+        <td>{{ word.details.origin }}</td>
+        <td>{{ word.details.example }}</td>
+        <td>{{ word.details.synonyms|join:", " }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

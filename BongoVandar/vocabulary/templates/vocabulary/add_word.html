@@ -1,0 +1,12 @@
+{% extends 'vocabulary/base.html' %}
+
+{% block content %}
+<h2>নতুন শব্দ যোগ করুন</h2>
+<form method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <button type="submit">সেভ করুন</button>
+</form>
+{% endblock %}
