@@ -15,6 +15,7 @@
 <table>
     <thead>
         <tr>
+            <th>ID</th> <!-- Added Primary Key Column -->
             <th>বর্ণ</th>
             <th>উৎস</th>
             <th>প্রকার</th>
@@ -29,6 +30,7 @@
     <tbody>
         {% for word in words %}
         <tr>
+            <td>{{ word.id }}</td> <!-- Display Primary Key -->
             <td>{{ word.varna.varna_name }}</td>
             <td>{{ word.source.source_name }}</td>
             <td>{{ word.type.type_name }}</td>
@@ -44,7 +46,7 @@
         </tr>
         {% empty %}
         <tr>
-            <td colspan="9">কোনো শব্দ পাওয়া যায়নি।</td>
+            <td colspan="10">কোনো শব্দ পাওয়া যায়নি।</td> <!-- Updated colspan to 10 -->
         </tr>
         {% endfor %}
     </tbody>
