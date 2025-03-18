@@ -1,0 +1,13 @@
+{% extends 'vocabulary/base.html' %}
+
+{% block title %}শব্দ মুছুন{% endblock %}
+
+{% block content %}
+<h2>শব্দ মুছুন: {{ word.root_word }}</h2>
+<p>আপনি কি নিশ্চিত যে "{{ word.root_word }}" মুছতে চান?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">হ্যাঁ, মুছুন</button>
+    <a href="{% url 'word_list' %}">না, ফিরে যান</a>
+</form>
+{% endblock %}

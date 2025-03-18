@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="bn">
 <head>
-    <title>শব্দভাণ্ডার</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-    </style>
+    <meta charset="UTF-8">
+    <title>{% block title %}শব্দভাণ্ডার{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h1>শব্দভাণ্ডার</h1>
-    <a href="{% url 'add_word' %}">নতুন শব্দ যোগ করুন</a>
-    <hr>
-    {% block content %}{% endblock %}
+    <header>
+        <h1>শব্দভাণ্ডার</h1>
+        <nav>
+            <a href="{% url 'word_list' %}">শব্দ তালিকা</a>
+            <a href="{% url 'add_word' %}">শব্দ যোগ করুন</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
 </body>
 </html>

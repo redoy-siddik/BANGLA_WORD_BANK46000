@@ -1,29 +1,52 @@
 {% extends 'vocabulary/base.html' %}
 
+{% block title %}শব্দ তালিকা{% endblock %}
+
 {% block content %}
 <h2>শব্দ তালিকা</h2>
+
+<!-- Search Form -->
+<form method="get" action="{% url 'word_list' %}">
+    <input type="text" name="q" placeholder="শব্দ, বর্ণ, উৎস, বা প্রকার দিয়ে খুঁজুন" value="{{ request.GET.q }}">
+    <button type="submit">খুঁজুন</button>
+</form>
+
+<!-- Word Table -->
 <table>
-    <tr>
-        <th>বর্ণ</th>
-        <th>উৎস</th>
-        <th>প্রকার</th>
-        <th>মূল শব্দ</th>
-        <th>লেবেল</th>
-        <th>উৎপত্তি</th>
-        <th>উদাহরণ</th>
-        <th>সমার্থক</th>
-    </tr>
-    {% for word in words %}
-    <tr>
-        <td>{{ word.varna }}</td>
-        <td>{{ word.source }}</td>
-        <td>{{ word.type }}</td>
-        <td>{{ word.root_word }}</td>
-        <td>{{ word.details.label }}</td>
-        <td>{{ word.details.origin }}</td>
-        <td>{{ word.details.example }}</td>
-        <td>{{ word.details.synonyms|join:", " }}</td>
-    </tr>
-    {% endfor %}
+    <thead>
+        <tr>
+            <th>বর্ণ</th>
+            <th>উৎস</th>
+            <th>প্রকার</th>
+            <th>মূল শব্দ</th>
+            <th>লেবেল</th>
+            <th>উৎপত্তি</th>
+            <th>উদাহরণ</th>
+            <th>সমার্থক</th>
+            <th>ক্রিয়া</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for word in words %}
+        <tr>
+            <td>{{ word.varna.varna_name }}</td>
+            <td>{{ word.source.source_name }}</td>
+            <td>{{ word.type.type_name }}</td>
+            <td>{{ word.root_word }}</td>
+            <td>{{ word.details.label }}</td>
+            <td>{{ word.details.origin }}</td>
+            <td>{{ word.details.example }}</td>
+            <td>{{ word.details.synonyms|join:", " }}</td>
+            <td>
+                <a href="{% url 'update_word' word.id %}">সম্পাদনা</a> |
+                <a href="{% url 'delete_word' word.id %}" onclick="return confirm('আপনি কি নিশ্চিত এটি মুছতে চান?');">মুছুন</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="9">কোনো শব্দ পাওয়া যায়নি।</td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
 {% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'vocabulary/base.html' %}
+
+{% block title %}শব্দ সম্পাদনা{% endblock %}
+
+{% block content %}
+<h2>শব্দ সম্পাদনা: {{ word.root_word }}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">সংরক্ষণ করুন</button>
+    <a href="{% url 'word_list' %}">বাতিল</a>
+</form>
+{% endblock %}
