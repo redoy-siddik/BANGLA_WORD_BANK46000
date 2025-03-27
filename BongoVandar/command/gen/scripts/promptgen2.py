@@ -2,17 +2,21 @@ import json
 import os
 
 # আউটপুট ডিরেক্টরি যেখানে JSON ফাইলটি তৈরি হবে
-output_directory = r"E:\SoftwareProject\shabdabhandar\BANGLA_WORD_BANK460000\BongoVandar\command\gen\json"
+output_directory = r"E:\SoftwareProject\shabdabhandar\BANGLA_WORD_BANK460000\BongoVandar\command\gen\output"
 
 # যদি ডিরেক্টরি না থাকে, তাহলে তৈরি কর
 if not os.path.exists(output_directory):
     os.makedirs(output_directory)
 
-# JSON ফাইলের সম্পূর্ণ পাথ (উদাহরণস্বরূপ output_kria.json)
-output_file = os.path.join(output_directory, "output_kria.json")
+# JSON ফাইলের টেক্সট আউটপুটের সম্পূর্ণ পাথ (এখানে output_kria.txt নামে)
+output_file = os.path.join(output_directory, "output_kria.txt")
 
 # কনফিগারেশন: কতটি এন্ট্রি তৈরি করতে চান
+main_category = "তৎসম"           # আপনি চাইলে এখানে "তদ্ভব" বা অন্য কোন মান লিখতে পারেন।
+sub_category = "ক্রিয়া"
+base_letter = "ক"
 num_entries = 1
+label_text = "যথার্থ ক্রিয়া/সহায়ক ক্রিয়া/যৌগিক ক্রিয়া/সংযোগ ক্রিয়া/অব্যয় ক্রিয়া"  # প্রয়োজনে পরিবর্তন করুন
 
 entries = []
 
@@ -24,7 +28,7 @@ for i in range(num_entries):
     
     # প্রতিটি "ক্রিয়া" এন্ট্রির স্ট্রাকচার
     entry = {
-        "লেবেল": f"ক্রিয়া লেবেল {i+1}",  # প্রয়োজনে পরিবর্তন করুন
+        "লেবেল": label_text,  # প্রয়োজনে পরিবর্তন করুন
         "মূল": main_word,
         "সমার্থক": synonyms,
         "উৎপত্তি": f"{main_word} শব্দটির উৎপত্তি বর্ণনা",
@@ -42,9 +46,13 @@ for i in range(num_entries):
 data = {
     "ক্রিয়া": entries
 }
-
-# JSON ফাইলটি নির্দিষ্ট ফোল্ডারে লেখা হচ্ছে
+# নির্দেশনা যুক্ত করা হচ্ছে
+instructions = {
+    "ডাটার উপর ভিত্তি করে যা করবে ": f"{base_letter} দিয়ে এরকম আরো ৫০ টি সতন্ত্র {main_category} হবে এবং একই সাথে   {sub_category} বাচকও হবে এমন শব্দের  জন্য আলাদা ভাবে JSON ফাইল তৈরি করে দাও"
+}
+# JSON ডাটা নির্দিষ্ট TXT ফাইলে লেখা হচ্ছে
 with open(output_file, "w", encoding="utf-8") as outfile:
     json.dump(data, outfile, ensure_ascii=False, indent=4)
-
+    outfile.write("\n\nনির্দেশনা:\n")
+    json.dump(instructions, outfile, ensure_ascii=False, indent=4)
 print(f"JSON file successfully created at: {output_file}")
