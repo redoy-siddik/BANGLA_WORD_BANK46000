@@ -15,7 +15,7 @@ output_file = os.path.join(output_directory, "output.txt")
 main_category = "তৎসম"           # আপনি চাইলে এখানে "তদ্ভব" বা অন্য কোন মান লিখতে পারেন।
 sub_category = "অব্যয়"           # প্রয়োজন অনুযায়ী পরিবর্তন করুন।
 label_text = f"কোন প্রকার {sub_category}"
-base_letter = "ক"                # মূল শব্দের শুরুতে এই অক্ষরটি ব্যবহার হবে।
+base_letter = "খ"                # মূল শব্দের শুরুতে এই অক্ষরটি ব্যবহার হবে।
 num_entries = 1                 # এখানে ১টি এন্ট্রি তৈরি করা হচ্ছে (আপনি চাইলে ৫০টি করতে পারেন)
 
 entries = []

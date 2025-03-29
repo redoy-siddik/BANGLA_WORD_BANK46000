@@ -14,7 +14,7 @@ output_file = os.path.join(output_directory, "output_kria.txt")
 # কনফিগারেশন: কতটি এন্ট্রি তৈরি করতে চান
 main_category = "তৎসম"           # আপনি চাইলে এখানে "তদ্ভব" বা অন্য কোন মান লিখতে পারেন।
 sub_category = "ক্রিয়া"
-base_letter = "ক"
+base_letter = "খ"
 num_entries = 1
 label_text = f"কোন প্রকার {sub_category}"  # প্রয়োজনে পরিবর্তন করুন
 
