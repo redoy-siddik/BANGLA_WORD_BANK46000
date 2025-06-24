@@ -13,15 +13,15 @@ txt_file = os.path.join(output_directory, "বিশেষ্য.txt")
 main_category = "দেশীয়"
 sub_category = "বিশেষ্য"
 base_letter = "খ"
-label_text = f"কোন প্রকার {sub_category} পদের শব্দ"
+label_text = f"{main_category} কোন প্রকার {sub_category} পদের শব্দ"
 num_entries = 50
 
 # TXT ফাইলে লিখছি
 with open(txt_file, "w", encoding="utf-8") as txtfile:
     for i in range(num_entries):
         main_word = f"{base_letter} শব্দ"
-        synonyms = [f"{main_word} সমার্থক " for j in range(5)]
-
+        synonyms = [f"{main_word} সমার্থক {j+1}" for j in range(5)]
+        
         entry = f"""লেবেল: {label_text}
 মূল: {main_word}
 সমার্থক ১: {synonyms[0]}
@@ -34,8 +34,8 @@ with open(txt_file, "w", encoding="utf-8") as txtfile:
 
 """
         txtfile.write(entry)
-
+    
     # অতিরিক্ত লাইন যুক্ত করছি
-    txtfile.write("টেমপ্লেট টি  ব্যবহার  করে CSV ফরম্যাটে, খ - দিয়ে শুরু হয় এমন  মোট ৫০ টি {sub_category} বাচক শব্দ দাও\n")
+    txtfile.write(f"টেমপ্লেট টি ব্যবহার করে CSV ফরম্যাটে, {base_letter} - দিয়ে শুরু হয় এমন মোট ৫০ টি {main_category} {sub_category} বাচক শব্দ দাও\n")
 
 print(f"✅ TXT file successfully created at: {txt_file}")
