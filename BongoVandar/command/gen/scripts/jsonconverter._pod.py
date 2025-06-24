@@ -3,8 +3,8 @@ import json
 import os
 
 # File paths
-csv_file = r"E:\SoftwareProject\shabdabhandar\BANGLA_WORD_BANK460000\BongoVandar\CSV\input\dataset.csv"
-json_file = r"E:\SoftwareProject\shabdabhandar\BANGLA_WORD_BANK460000\BongoVandar\json\output\dataset.json"
+csv_file = r"D:\Redoy\University\Reasearch\Sadat vai\Bangla_wordbank\BANGLA_WORD_BANK46000\BongoVandar\CSV\input\dataset.csv"
+json_file = r"D:\Redoy\University\Reasearch\Sadat vai\Bangla_wordbank\BANGLA_WORD_BANK46000\BongoVandar\json\output\dataset.json"
 
 # Read data from the CSV file
 data = []

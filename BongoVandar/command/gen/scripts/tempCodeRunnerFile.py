@@ -1,7 +1,7 @@
 import os
 
 # আউটপুট ডিরেক্টরি
-output_directory = r"E:\SoftwareProject\shabdabhandar\BANGLA_WORD_BANK460000\BongoVandar\command\gen\output"
+output_directory = r"D:\Redoy\University\Reasearch\Sadat vai\Bangla_wordbank\BANGLA_WORD_BANK46000\BongoVandar\command\gen\output"
 
 if not os.path.exists(output_directory):
     os.makedirs(output_directory)
